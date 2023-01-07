@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/Yu-Jaeyoung/nodejs/issues"
   },
-  "homepage": "https://github.com/Yu-Jaeyoung/nodejs#readme"
+  "homepage": "https://github.com/Yu-Jaeyoung/nodejs#readme",
+  "type" : "module"
 }
