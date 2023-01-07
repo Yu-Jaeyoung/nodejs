@@ -1,0 +1,19 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "This Repository is for Node.js. Studying at Wisoft.lab",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yu-Jaeyoung/nodejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yu-Jaeyoung/nodejs/issues"
+  },
+  "homepage": "https://github.com/Yu-Jaeyoung/nodejs#readme"
+}
