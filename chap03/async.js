@@ -1,4 +1,4 @@
-const fs = require('fs');
+import fs from 'fs';
 
 console.log('시작');
 fs.readFile('./readme2.txt', (err, data) => {
