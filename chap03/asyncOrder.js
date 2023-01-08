@@ -9,14 +9,16 @@ async function run() {
             return fs.readFile('./readme2.txt');
         })
         .then((data) => {
-            console.log('1번', data.toString())
+            console.log('2번', data.toString())
             return fs.readFile('./readme2.txt');
         })
         .then((data) => {
-            console.log('1번', data.toString())
+            console.log('3번', data.toString())
             return fs.readFile('./readme2.txt');
             })
         .catch((err) => {
             console.log(err);
         });
 }
+
+run();
