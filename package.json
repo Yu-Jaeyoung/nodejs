@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Yu-Jaeyoung/nodejs#readme",
   "type": "module",
   "dependencies": {
-    "http": "^0.0.1-security"
+    "http": "^0.0.1-security",
+    "path": "^0.12.7"
   }
 }
