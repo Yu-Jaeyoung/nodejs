@@ -1,4 +1,4 @@
-const fs = require('fs').promises;
+import fs from "fs/promises";
 
 console.log('시작');
 fs.readFile('./readme2.txt')
