@@ -1,0 +1,17 @@
+//Front & Backend 협업 과정...
+
+POST http://localhost:8082/user
+Content-Type: application/json
+
+{
+  "name" : "Park"
+}
+
+###
+PUT http://localhost:8082/user
+
+###
+GET http://localhost:8082/users
+Accept: application/json
+
+
