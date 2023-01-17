@@ -5,10 +5,12 @@ import session from 'express-session';
 import dotenv from 'dotenv';
 import path from 'path';
 
+
+const __dirname = path.resolve();
 dotenv.config();
 
-import indexRouter from './routes';
-import userRouter from './routes/user';
+import indexRouter from './routes/index.js';
+import userRouter from './routes/user.js';
 
 const app = express();
 app.set('port', process.env.PORT || 3000);
