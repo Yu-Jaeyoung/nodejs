@@ -1,14 +1,22 @@
-import express from "express";
+/*import express from "express";
 import path from "path";
 import morgan from "morgan";
-import nunjucks from "nunjucks";
+import nunjucks from "nunjucks";*/
 
-import {sequelize} from "./models";
+const express = require("express");
+const path = require("path");
+const morgan = require("morgan");
+const nunjucks = require("nunjucks");
 
+
+const {sequelize} = require("./models");
+
+/*
 const __dirname = path.resolve();
+*/
 
 const app = express();
-app.set("port", process.env.PORT || 3001);
+app.set("port", process.env.PORT || 3306);
 app.set("view engine", "html");
 nunjucks.configure("views", {
   express: app,
@@ -28,7 +36,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
 app.use((req, res, next) => {
-  const error = new Error(`${req.method}${req.url} 라우터가 없습니다.`);
+  const error = new Error(`${req.method} ${req.url} 라우터가 없습니다.`);
   error.status = 404;
   next(error);
 });
