@@ -8,11 +8,8 @@ const env = process.env.NODE_ENV || 'development';
 const config = require('../config/config')[env];
 const db = {};
 
-const sequelize = new Sequelize("nodejs","root","비밀번호 문제는 아닌데...", {
-  dialect:"mysql",
-  host:"127.0.0.1",
-  port: 3306
-});
+const sequelize = new Sequelize(config.database, config.username, config.password, config);
+
 
 db.sequelize = sequelize;
 
