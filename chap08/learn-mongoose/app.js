@@ -1,14 +1,28 @@
-const express = require('express');
+import express from "express";
+import path from "path";
+import morgan from "morgan";
+import nunjucks from "nunjucks";
+
+/*const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
-const nunjucks = require('nunjucks');
+const nunjucks = require('nunjucks');*/
 
-const connect = require('./schemas');
+import connect from './schemas/index.js';
+import indexRouter from './routes/index.js';
+import usersRouter from './routes/users.js';
+import commentsRouter from './routes/comments.js';
+
+/*const connect = require('./schemas');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const commentsRouter = require('./routes/comments');
+const commentsRouter = require('./routes/comments');*/
+
+
 
 const app = express();
+const __dirname = path.resolve();
+
 app.set('port', process.env.PORT || 3002);
 app.set('view engine', 'html');
 nunjucks.configure('views', {

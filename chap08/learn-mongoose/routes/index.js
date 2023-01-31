@@ -1,5 +1,8 @@
-const express = require("express");
-const User = require("../schemas/user");
+/*const express = require("express");
+const User = require("../schemas/user");*/
+
+import express from 'express';
+import User from '../schemas/user.js';
 
 const router = express.Router();
 
@@ -13,4 +16,4 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-module.exports = router;
+export default router;

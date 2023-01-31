@@ -1,6 +1,11 @@
-const express = require("express");
+/*const express = require("express");
 const User = require("../schemas/user");
-const Comment = require("../schemas/comment");
+const Comment = require("../schemas/comment");*/
+
+import express from'express';
+import User from '../schemas/user.js';
+import Comment from '../schemas/comment.js';
+
 
 const router = express.Router();
 
@@ -41,4 +46,5 @@ router.get("/:id/comments", async (req, res, next) => {
   }
 });
 
-module.exports = router;
+/*module.exports = router;*/
+export default router;

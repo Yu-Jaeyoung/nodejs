@@ -1,5 +1,5 @@
-const express = require("express");
-const Comment = require("../schemas/comment");
+import express from 'express';
+import Comment from'../schemas/comment.js';
 
 const router = express.Router();
 
@@ -42,4 +42,6 @@ router.route("/:id")
     }
   });
 
-module.exports = router;
+/*module.exports = router;*/
+
+export default router;

@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+/*const mongoose = require('mongoose');*/
+import mongoose from 'mongoose';
 
 const connect = () => {
   if (process.env.NODE_ENV !== 'production') {
@@ -24,4 +25,5 @@ mongoose.connection.on('disconnected', () => {
   connect();
 });
 
-module.exports = connect;
+/*module.exports = connect;*/
+export default  connect;
