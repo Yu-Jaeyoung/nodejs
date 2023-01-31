@@ -1,6 +1,10 @@
-const express = require("express");
+/*const express = require("express");
 const User = require("../models/user");
-const Comment = require("../models/comment");
+const Comment = require("../models/comment");*/
+
+import express from "express";
+import User from "../models/user.js";
+import Comment from "../models/comment.js";
 
 const router = express.Router();
 
@@ -45,4 +49,5 @@ router.get("/:id/comments", async (req, res, next) => {
   }
 });
 
-module.exports = router;
+/*module.exports = router;*/
+export default router;

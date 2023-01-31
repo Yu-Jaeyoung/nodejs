@@ -1,13 +1,14 @@
-/*
-import {Sequelize} from "sequelize";
-*/
-
-const Sequelize = require("sequelize");
+/*const Sequelize = require("sequelize");
 const User = require("./user");
-const Comment = require("./comment");
+const Comment = require("./comment");*/
+
+import Sequelize from "sequelize";
+import User from "./user.js";
+import Comment from "./comment.js";
 
 const env = process.env.NODE_ENV || "development";
-const config = require("../config/config")[env];
+import config from '../config/config.json[env]'
+// const config = require("../config/config")[env];
 const db = {};
 
 const sequelize = new Sequelize(config.database, config.username, config.password, config);
@@ -24,4 +25,5 @@ Comment.initiate(sequelize);
 User.associate(db);
 Comment.associate(db);
 
-module.exports = db;
+/*module.exports = db;*/
+export default db;

@@ -1,4 +1,5 @@
-const Sequelize = require("sequelize");
+/*const Sequelize = require("sequelize");*/
+import Sequelize from 'sequelize';
 
 class Comment extends Sequelize.Model {
   static initiate(sequelize) {
@@ -28,4 +29,5 @@ class Comment extends Sequelize.Model {
   }
 };
 
-module.exports = Comment;
+/*module.exports = Comment;*/
+export default Comment;

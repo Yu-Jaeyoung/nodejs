@@ -1,24 +1,24 @@
-/*import express from "express";
-import path from "path";
-import morgan from "morgan";
-import nunjucks from "nunjucks";*/
-
-const express = require("express");
+/*const express = require("express");
 const path = require("path");
 const morgan = require("morgan");
-const nunjucks = require("nunjucks");
+const nunjucks = require("nunjucks");*/
 
+import express from "express";
+import path from "path";
+import morgan from "morgan";
+import nunjucks from "nunjucks";
 
-const {sequelize} = require("./models");
-
+/*const {sequelize} = require("./models");
 const indexRouter = require("./routes");
 const usersRouter = require("./routes/users");
-const commentsRouter = require("./routes/comments");
+const commentsRouter = require("./routes/comments");*/
 
+import * as sequelize from "./models/index.js"
+import indexRouter from "./routes/index.js";
+import usersRouter from "./routes/users.js";
+import commentsRouter from "./routes/comments.js";
 
-/*
 const __dirname = path.resolve();
-*/
 
 const app = express();
 app.set("port", process.env.PORT || 3306);
