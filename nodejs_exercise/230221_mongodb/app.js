@@ -1,39 +1,46 @@
 import {MongoClient} from "mongodb";
 
-const databaseUrl = "mongodb://Yu-Jaeyoung:nodejs@localhost:27017/admin";
-const client = await MongoClient.connect(databaseUrl);
-const database = client.db("Homework");
-const collection = database.collection("users");
+async function connectDB() {
+  const databaseUrl = "mongodb://Yu-Jaeyoung:nodejs@localhost:27017/admin";
+  const client = await MongoClient.connect(databaseUrl);
+  const database = client.db("Homework");
+  return database.collection("users");
+}
 
 
-async function create(newUser) {
+async function registerUser(newUser) {
+  const collection = await connectDB();
   await collection.insertOne(newUser);
   console.log("Create Success");
 }
 
 async function printAll() {
+  const collection = await connectDB();
   console.log(`users => ${JSON.stringify(await collection.find().toArray())}`);
 }
 
-async function findOneWithName(name) {
+async function findOneByName(name) {
+  const collection = await connectDB();
   const findUser = await collection.findOne({"name": name});
   console.log(`findUser => ${JSON.stringify(await findUser)}`);
 }
 
-async function findOneWithEmail(email) {
+async function findOneByEmail(email) {
+  const collection = await connectDB();
   const findUser = await collection.findOne({"email": email});
   console.log(`findUser => ${JSON.stringify(await findUser)}`);
 }
 
-async function updateUsersEmail(name, updatedEmail) {
+async function updateUserByName(name, updatedEmail) {
+  const collection = await connectDB();
   await collection.updateOne({"name": name}, {$set: {"email": updatedEmail}});
   console.log("Update completed");
 }
-async function deleteUser(name) {
+
+async function deleteUserByName(name) {
+  const collection = await connectDB();
   await collection.deleteOne({"name": name});
 }
-
-
 
 
 async function main() {
@@ -43,14 +50,14 @@ async function main() {
     email: "Juno@naver.com",
   };
 
-  await create(newUser);
+  await registerUser(newUser);
   await printAll();
-  await findOneWithEmail("Juno@naver.com");
-  await findOneWithName("Juno");
-  await updateUsersEmail("Juno", "Juno@hanbat.ac.kr");
-  await findOneWithEmail("Juno@naver.com");
+  await findOneByEmail("Juno@naver.com");
+  await findOneByName("Juno");
+  await updateUserByName("Juno", "Juno@hanbat.ac.kr");
+  await findOneByEmail("Juno@naver.com");
   await printAll();
-  await deleteUser("Juno");
+  await deleteUserByName("Juno");
 }
 
 main();
