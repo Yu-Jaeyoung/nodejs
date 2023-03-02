@@ -1,0 +1,47 @@
+###
+GET http://localhost:8000/api/greet
+Accept: application/json
+
+###
+GET http://localhost:8000/api/greet?name=jaeyoung
+Accept: application/json
+
+###
+POST http://localhost:8000/api/users
+Accept: application/json
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Jaeyoung",
+  "level": "Silver"
+}
+
+###
+POST http://localhost:8000/api/users
+Accept: application/json
+Content-Type: application/json
+
+{
+  "id": 2,
+  "name": "JaeOne",
+  "level": "Bronze"
+}
+
+###
+GET http://localhost:8000/api/users
+Accept: application/json
+
+###
+PATCH http://localhost:8000/api/users/1
+Content-Type: application/json
+
+{
+"id" : 1,
+"name": "Jaeyoung",
+"level": "Gold"
+}
+
+###
+DELETE http://localhost:8000/api/users/1
+Accept: application/json
