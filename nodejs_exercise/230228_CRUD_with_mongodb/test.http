@@ -1,0 +1,74 @@
+###
+POST http://localhost:8000
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email": "Jaeyoung@wisoft.io",
+  "password": "nodejs",
+  "userName": "Jaeyoung",
+  "nickName": "Jack"
+}
+
+###
+POST http://localhost:8000
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email": "JaeOne@wisoft.io",
+  "password": "nodejs",
+  "userName": "JaeOne"
+}
+
+###
+POST http://localhost:8000
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email": "JaeOne@wisoft.io",
+  "password": "nodejs",
+  "userName": "JaeOne",
+  "nickName": "JackJack"
+}
+
+###
+DELETE  http://localhost:8000
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email": "JaeOne@wisoft.io",
+  "password": "nodejs"
+}
+
+###
+DELETE  http://localhost:8000
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email": "Jaeyoung@wisoft.io",
+  "password": "nodejs"
+}
+
+###
+PATCH http://localhost:8000
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email": "Jaeyoung@wisoft.io",
+  "password": "nodejs",
+  "nickname": "JackOne"
+}
+
+###
+GET http://localhost:8000
+Accept: application/json
+Content-Type: application/json
+
+{
+  "userName": "JaeOne"
+}
