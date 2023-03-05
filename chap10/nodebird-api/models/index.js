@@ -1,8 +1,10 @@
 import Sequelize from "sequelize";
 import fs from "fs";
 import path from "path";
+
 const env = process.env.NODE_ENV || "development";
-import Config from "../config/config.json" assert { type: "json" };
+import Config from "../config/config.json" assert {type: "json"};
+
 const config = Config[env];
 
 const __dirname = path.resolve();
@@ -20,13 +22,13 @@ fs
   .readdirSync(__dirname) // 현재 폴더의 모든 파일을 조회
   .filter(file => { // 숨김 파일, index.js, js 확장자가 아닌 파일 필터링
     return (file.indexOf(".") !== 0) && (file !== basename) && (file.slice(-3) === ".js");
-  })
-  /*.forEach(file => { // 해당 파일의 모델 불러와서 init
-    const model = import(path.join(__dirname, file));
-    console.log(file, model.name);
-    db[model.name] = model;
-    return model.initiate(sequelize)
-  });*/
+  });
+/*.forEach(file => { // 해당 파일의 모델 불러와서 init
+  const model = import(path.join(__dirname, file));
+  console.log(file, model.name);
+  db[model.name] = model;
+  return model.initiate(sequelize)
+});*/
 
 Object.keys(db).forEach(modelName => { // associate 호출
   if (db[modelName].associate) {
@@ -34,4 +36,4 @@ Object.keys(db).forEach(modelName => { // associate 호출
   }
 });
 
-export default db;
+export {db, sequelize};

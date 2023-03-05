@@ -11,7 +11,7 @@ dotenv.config();
 
 import authRouter from "./routes/auth.js";
 import indexRouter from "./routes/index.js"
-//import * as sequelize from "./models/modelsGroup.js";
+import {sequelize} from "./models/modelsGroup.js";
 import passportConfig from "./passport/index.js"
 
 const app = express();
@@ -28,13 +28,13 @@ nunjucks.configure('views', {
 
 // 일단 지운 부분
 // db테이블을 생성하는 부분
-/*sequelize.sync({ force: false })
+sequelize.sync({ force: false })
   .then(() => {
     console.log('데이터베이스 연결 성공');
   })
   .catch((err) => {
     console.error(err);
-  });*/
+  });
 
 
 app.use(morgan('dev'));
