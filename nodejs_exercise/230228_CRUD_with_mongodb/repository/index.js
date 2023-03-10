@@ -14,25 +14,22 @@ const newUser = {
 // create
 export async function registerUser(newUser) {
   const connection = await connect();
-  connection.insertOne(newUser);
+  return connection.insertOne(newUser);
 }
 
 // read
-export async function findUserByUserName(userName) {
+export async function findAll() {
   const connection = await connect();
-  connection.findOne({"userName": userName}, {_id: 0});
+  return connection.find({});
 }
 
-export async function findAllUser() {
+export async function findById(email) {
   const connection = await connect();
-  connection.find({});
+  return connection.find({"email": email});
 }
+
 
 // update
-export async function updateNickNameByEmailAndPassword(email, password, nickname) {
-  const connection = await connect();
-  connection.updateOne({"email": email, "password": password}, {$set: {"nickname": nickname}});
-}
 
 
 // delete

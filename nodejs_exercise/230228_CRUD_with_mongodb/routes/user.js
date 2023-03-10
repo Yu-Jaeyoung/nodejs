@@ -1,46 +1,52 @@
 import express from "express";
 import {
-  registerUser,
-  deleteUserByEmailAndPassword,
-  updateNickNameByEmailAndPassword,
-  findUserByUserName,
-  findAllUser,
+  registerUser, findAll, findById,
 } from "../repository/index.js";
 
 const router = express.Router();
 
-router.route("/")
-  // userName으로 사용자 정보를 받아오는 경우, id는 미출력
-  // 뭐가 문제일까...........................
-  .get((req, res) => {
-    const users = findAllUser();
+// 해야할일
+// status(200) 반환으로 성공 여부 반환하기
+// 사용자 등록은 status(201)
+// npm install http-status-codes --save // status code 를 자동으로 불러와주는
+// get을 할때는 바디로 받는게 없음
+// res처리를 해줘야지
+
+
+router.route("/api/users")
+  .get(async (req, res) => {
+    const users = await findAll();
     console.log(`${JSON.stringify(users)}`);
     console.log(users);
-    res.send(`${JSON.stringify(users)}`);
-    /*
-        console.log(`${JSON.stringify(findUserByUserName(req.body["userName"]))}`);
-    */
+    res.status(200).send(`${JSON.stringify(users)}`);
   })
-  // POST 과정에서 정확한 형태의 객체가 넘어오나 체크 필요
-  // req.body 들이 존제하는가 체크
-  // 중복 입력에 대한 처리가 없는 상태
-  // post 과정에서 프론트적으로 성공여부 전달하는 방법이 무엇일까?
-  .post((req, res) => {
+  // 이메일, 비밀번호, 유저이름, 닉네임 입력 시 등록 가능
+  .post(async (req, res) => {
     if (req.body["email"] && req.body["password"] && req.body["userName"] && req.body["nickName"]) {
-      registerUser(req.body);
+      await registerUser(req.body);
+      res.status(201).send(`${JSON.stringify(req.body)}`);
     } else {
       console.log(req.body);
       console.log("Create Failed");
     }
   })
-  // 이메일과 비밀번호가 동일한 객체에 대해서 삭제 진행
   .delete((req, res) => {
     deleteUserByEmailAndPassword(req.body["email"], req.body["password"]);
-  })
-  // 이메일과 패스워드가 일치하면 닉네임 업데이트 하게끔 설정
-  // 해당 유저가 존재하는지 여부부터 파악 과정 추가 필요..
-  .patch((req, res) => {
-    updateNickNameByEmailAndPassword(req.body["email"], req.body["password"], req.body["nickname"]);
+  });
+
+router.route("/api/users/:userId")
+  .patch(async (req, res) => {
+    console.log(`${JSON.stringify(req.body)}`);
+    console.log();
+    const findUser = await findById(req.params.userId);
+    if ((findUser.email === req.body.email) && (findUser.password === req.body.password)) {
+      console.log(req.params.userId);
+      const result = await updateById(req.params.userId, findUser.nickName);
+      res.status(200)
+        .send(result);
+    } else {
+      console.log("sorry, I can't update");
+    }
   });
 
 
