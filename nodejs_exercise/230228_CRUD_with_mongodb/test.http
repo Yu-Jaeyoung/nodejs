@@ -1,5 +1,5 @@
 ###
-POST http://localhost:8000
+POST http://localhost:8000/api/users
 Accept: application/json
 Content-Type: application/json
 
@@ -7,22 +7,11 @@ Content-Type: application/json
   "email": "Jaeyoung@wisoft.io",
   "password": "nodejs",
   "userName": "Jaeyoung",
-  "nickName": "Jack"
+  "nickName": "Jackyoung"
 }
 
 ###
-POST http://localhost:8000
-Accept: application/json
-Content-Type: application/json
-
-{
-  "email": "JaeOne@wisoft.io",
-  "password": "nodejs",
-  "userName": "JaeOne"
-}
-
-###
-POST http://localhost:8000
+POST http://localhost:8000/api/users
 Accept: application/json
 Content-Type: application/json
 
@@ -30,45 +19,33 @@ Content-Type: application/json
   "email": "JaeOne@wisoft.io",
   "password": "nodejs",
   "userName": "JaeOne",
-  "nickName": "JackJack"
+  "nickName": "Jack"
 }
 
+
 ###
-DELETE  http://localhost:8000
+GET http://localhost:8000/api/users
 Accept: application/json
-Content-Type: application/json
 
-{
-  "email": "JaeOne@wisoft.io",
-  "password": "nodejs"
-}
 
 ###
-DELETE  http://localhost:8000
-Accept: application/json
-Content-Type: application/json
-
-{
-  "email": "Jaeyoung@wisoft.io",
-  "password": "nodejs"
-}
-
-###
-PATCH http://localhost:8000
+PATCH http://localhost:8000/api/users
 Accept: application/json
 Content-Type: application/json
 
 {
   "email": "Jaeyoung@wisoft.io",
   "password": "nodejs",
-  "nickname": "JackOne"
+  "nickName": "patchedNickname"
 }
 
+
 ###
-GET http://localhost:8000
+DELETE  http://localhost:8000/api/users
 Accept: application/json
 Content-Type: application/json
 
 {
-  "userName": "JaeOne"
+  "email": "Jaeyoung@wisoft.io",
+  "password": "nodejs"
 }
