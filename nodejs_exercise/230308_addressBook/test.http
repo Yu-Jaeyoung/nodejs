@@ -1,0 +1,87 @@
+###
+POST http://localhost:8000/api/users
+Accept: application/json
+Content-Type: application/json
+
+{
+  "userName": "Jaeyoung",
+  "address": "Sejong-si Dodam-dong",
+  "phoneNumber": "010-xxxx-xxxx",
+  "email": "Jaeyoung@wisoft.io"
+}
+
+###
+POST http://localhost:8000/api/users
+Accept: application/json
+Content-Type: application/json
+
+{
+  "userName": "JaeOne",
+  "address": "Sejong-si Dajeong-dong",
+  "phoneNumber": "010-xxxx-xxxx",
+  "email": "JaeOne@wisoft.io"
+}
+
+###
+POST http://localhost:8000/api/users
+Accept: application/json
+Content-Type: application/json
+
+{
+  "userName": "JaeTwo",
+  "address": "Sejong-si Hansol-dong",
+  "phoneNumber": "010-xxxx-xxxx",
+  "email": "JaeTwo@wisoft.io"
+}
+
+###
+POST http://localhost:8000/api/users
+Accept: application/json
+Content-Type: application/json
+
+{
+  "userName": "JaeThree",
+  "address": "Sejong Dodam",
+  "phoneNumber": "010-xxxx-xxxx",
+  "email": "JaeThree@wisoft.io"
+}
+
+###
+POST http://localhost:8000/api/users
+Accept: application/json
+Content-Type: application/json
+
+{
+  "userName": "JaeFour",
+  "address": "Daejeon-si Yuseong-gu Deokmyung-dong",
+  "phoneNumber": "010-xxxx-xxxx",
+  "email": "JaeFour@wisoft.io"
+}
+
+###
+POST http://localhost:8000/api/users
+Accept: application/json
+Content-Type: application/json
+
+{
+  "userName": "JaeFive",
+  "address": "Daejeon-si Yuseong-gu Hakha-dong",
+  "phoneNumber": "010-xxxx-xxxx",
+  "email": "JaeFive@wisoft.io"
+}
+
+###
+GET http://localhost:8000/api/users
+Accept: application/json
+
+###
+GET http://localhost:8000/api/users?userName=JaeOne
+Accept: application/json
+
+###
+GET http://localhost:8000/api/users?email=Jaeyoung@wisoft.io
+Accept: application/json
+
+###
+GET http://localhost:8000/api/users?address=Yuseong-gu
+Accept: application/json
