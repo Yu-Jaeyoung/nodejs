@@ -1,5 +1,5 @@
 import {MongoClient} from "mongodb";
-
+import {ObjectId} from "mongodb";
 /*
 Example From
 {
@@ -40,6 +40,32 @@ export async function readInfoByEmail(email) {
 export async function readInfoByAddress(address) {
   const addressBook = await getConnection();
   return await addressBook.find({"address": {$regex: address}}).toArray();
+}
+
+export async function updateUserNameById(_id, userName) {
+  const addressBook = await getConnection();
+  return await addressBook.updateOne({"_id": _id}, {$set: {"userName": userName}});
+}
+
+export async function updateAddressById(_id, address) {
+  const addressBook = await getConnection();
+  return await addressBook.updateOne({"_id": _id}, {$set: {"address": address}});
+}
+
+export async function updatePhoneNumberById(_id, phoneNumber) {
+  const addressBook = await getConnection();
+  return await addressBook.updateOne({"_id": _id}, {$set: {"phoneNumber": phoneNumber}});
+}
+
+export async function updateEmailById(_id, email) {
+  const addressBook = await getConnection();
+  return await addressBook.updateOne({"_id": _id}, {$set: {"email": email}});
+}
+
+export async function deleteById(userId) {
+  const connection = await getConnection();
+  const objectId = new ObjectId(userId);
+  await connection.deleteOne({"_id": objectId});
 }
 
 

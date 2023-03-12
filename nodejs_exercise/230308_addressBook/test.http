@@ -4,10 +4,10 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "userName": "Jaeyoung",
-  "address": "Sejong-si Dodam-dong",
+  "userName": "Hyeonsig jeon",
+  "address": "Sejong-si nasung-dong",
   "phoneNumber": "010-xxxx-xxxx",
-  "email": "Jaeyoung@wisoft.io"
+  "email": "hyeonsig@wisoft.io"
 }
 
 ###
@@ -83,5 +83,18 @@ GET http://localhost:8000/api/users?email=Jaeyoung@wisoft.io
 Accept: application/json
 
 ###
-GET http://localhost:8000/api/users?address=Yuseong-gu
+GET http://localhost:8000/api/users?address=Sejong-si
 Accept: application/json
+
+###
+PATCH http://localhost:8000/api/users/640dd7db1623398a9eaf06e4
+Accept: application/json
+Content-Type: application/json
+
+{
+  "address" : "jongchon-dong"
+}
+###
+DELETE http://localhost:8000/api/users/640dd7db1623398a9eaf06e4
+Accept: application/json
+Content-Type: application/json

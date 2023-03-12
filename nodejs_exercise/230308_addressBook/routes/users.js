@@ -1,5 +1,10 @@
 import express from "express";
-import {createInfo, readAllInfo, readInfoByAddress, readInfoByEmail, readInfoByName} from "../repository/index.js";
+import {
+  createInfo, readAllInfo, readInfoByAddress, readInfoByEmail,
+  readInfoByName, updateAddressById, updateEmailById, updatePhoneNumberById, updateUserNameById, deleteById,
+} from "../repository/index.js";
+import {ObjectId} from "mongodb";
+
 
 const router = express.Router();
 
@@ -65,6 +70,53 @@ router.route("/api/users")
         console.log("Found");
       }
     }
+  });
+router.route("/api/users/:id")
+  // 갱신할 내용을 body로 받기
+  // body로 받은 내용을 보고 갱신할 판단 진행
+  // 동시에 바꿀수 없음. 패치 필요
+  .patch(async (req, res) => {
+    // userName 갱신
+    if (req.body["userName"]) {
+      const UserId = new ObjectId(req.params.id);
+      const patchUser = await updateUserNameById(UserId, req.body["userName"]);
+      res.status(200).send(`${JSON.stringify(patchUser)}`);
+    } else if (req.body["address"]) {
+      // address 갱신
+      if (req.body["address"].includes("-si")
+        || req.body["address"].includes("-gu")
+        || req.body["address"].includes("-dong")) {
+        const newUser = await createInfo(req.body);
+        res.status(201).send(newUser);
+        console.log("Create Success");
+      } else {
+        console.log(req.body);
+        res.status(406).send(req.body);
+        console.log("올바르지 않은 주소 형식");
+      }
+      const UserId = new ObjectId(req.params.id);
+      const patchUser = await updateAddressById(UserId, req.body["address"]);
+      res.status(200).send(`${JSON.stringify(patchUser)}`);
+    } else if (req.body["phoneNumber"]) {
+      // phoneNumber 갱신
+      const UserId = new ObjectId(req.params.id);
+      const patchUser = await updatePhoneNumberById(UserId, req.body["phoneNumber"]);
+      res.status(200).send(`${JSON.stringify(patchUser)}`);
+    } else if (req.body["email"]) {
+      // email 갱신
+      const UserId = new ObjectId(req.params.id);
+      const patchUser = await updateEmailById(UserId, req.body["email"]);
+      res.status(200).send(`${JSON.stringify(patchUser)}`);
+    } else {
+      res.status(406).send(`${JSON.stringify(req.body)}`);
+      console.log("Path Failed");
+    }
+  })
+  .delete(async (req, res) => {
+    const deleteUser = await deleteById(req.params.id);
+    console.log(`${req.params.id}님이 삭제되었습니다`);
+    res.status(201).send(deleteUser);
+
   });
 
 export default router;
