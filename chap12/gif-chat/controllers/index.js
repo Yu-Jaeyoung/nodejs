@@ -1,5 +1,5 @@
 import Room from "../schemas/room.js";
-import Chat from "../schemas/chat.js";
+import removeRoomService from "../services/index.js";
 
 export async function renderMain(req, res, next) {
   try {
@@ -65,8 +65,7 @@ export async function enterRoom(req, res, next) {
 
 export async function removeRoom(req, res, next) {
   try {
-    await Room.deleteOne({_id: req.params.id});
-    await Chat.deleteMany({room: req.params.id});
+    await removeRoomService(req.params.id);
     res.send("ok");
   } catch (error) {
     console.error(error);
