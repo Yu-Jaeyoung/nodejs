@@ -5,10 +5,12 @@ import cookieParser from "cookie-parser";
 import session from "express-session";
 import nunjucks from "nunjucks";
 import dotenv from "dotenv";
+import ColorHash from "color-hash";
 
 dotenv.config();
 import webSocket from "./socket.js";
 import indexRouter from "./routes/index.js";
+import connect from "./schemas/index.js";
 
 const __dirname = path.resolve();
 
@@ -19,6 +21,7 @@ nunjucks.configure("views", {
   express: app,
   watch: true,
 });
+connect();
 
 app.use(morgan("dev"));
 app.use(express.static(path.join(__dirname, "public")));
@@ -34,6 +37,15 @@ app.use(session({
     secure: false,
   },
 }));
+
+app.use((req, res, next) => {
+  // if (!req.session.color) {
+  //   const colorHash = new ColorHash();
+  //   req.session.color = colorHash.hex(req.sessionID);
+  //   console.log(req.session.color, req.sessionID);
+  // }
+  next();
+});
 
 app.use("/", indexRouter);
 
@@ -54,4 +66,4 @@ const server = app.listen(app.get("port"), () => {
   console.log(app.get("port"), "번 포트에서 대기 중");
 });
 
-webSocket(server);
+webSocket(server, app);
