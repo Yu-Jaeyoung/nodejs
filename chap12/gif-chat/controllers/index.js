@@ -1,4 +1,5 @@
 import Room from "../schemas/room.js";
+import Chat from "../schemas/chat.js";
 import removeRoomService from "../services/index.js";
 
 export async function renderMain(req, res, next) {
@@ -51,10 +52,11 @@ export async function enterRoom(req, res, next) {
     if (room.max <= rooms.get(req.params.id)?.size) {
       return res.redirect("/?error=허용 인원이 초과하였습니다.");
     }
+    const chats = await Chat.find({room: room._id}).sort("createdAt");
     return res.render("chat", {
       room,
       title: room.title,
-      chats: [],
+      chats,
       user: req.session.color,
     });
   } catch (error) {
@@ -66,6 +68,21 @@ export async function enterRoom(req, res, next) {
 export async function removeRoom(req, res, next) {
   try {
     await removeRoomService(req.params.id);
+    res.send("ok");
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+}
+
+export async function sendChat(req, res, next) {
+  try {
+    const chat = await Chat.create({
+      room: req.params.id,
+      user: req.session.color,
+      chat: req.body.chat,
+    });
+    req.app.get("io").of("/chat").to(req.params.id).emit("chat", chat);
     res.send("ok");
   } catch (error) {
     console.error(error);
