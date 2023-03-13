@@ -5,12 +5,12 @@ import cookieParser from "cookie-parser";
 import session from "express-session";
 import nunjucks from "nunjucks";
 import dotenv from "dotenv";
-import ColorHash from "color-hash";
 
 dotenv.config();
 import webSocket from "./socket.js";
 import indexRouter from "./routes/index.js";
 import connect from "./schemas/index.js";
+import ColorHash from "color-hash";
 
 const __dirname = path.resolve();
 
@@ -39,11 +39,11 @@ app.use(session({
 }));
 
 app.use((req, res, next) => {
-  // if (!req.session.color) {
-  //   const colorHash = new ColorHash();
-  //   req.session.color = colorHash.hex(req.sessionID);
-  //   console.log(req.session.color, req.sessionID);
-  // }
+  if (!req.session.color) {
+    const colorHash = new ColorHash.default;
+    req.session.color = colorHash.hex(req.sessionID);
+    console.log(req.session.color, req.sessionID);
+  }
   next();
 });
 
