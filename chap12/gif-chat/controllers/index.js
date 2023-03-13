@@ -89,3 +89,18 @@ export async function sendChat(req, res, next) {
     next(error);
   }
 }
+
+export async function sendGif(req, res, next) {
+  try {
+    const chat = await Chat.create({
+      room: req.params.id,
+      user: req.session.color,
+      gif: req.file.filename,
+    });
+    req.app.get("io").of("/chat").to(req.params.id).emit("chat", chat);
+    res.send("ok");
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+}
