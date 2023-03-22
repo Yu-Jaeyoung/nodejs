@@ -1,0 +1,28 @@
+###
+GET http://localhost:8000/api/users/jwt/6419e1f0733cfde78433ccd5
+Accept: application/json
+
+###
+POST http://localhost:8000/api/users
+Accept: application/json
+Content-Type: application/json
+
+{
+  "userName": "Jaeyoung",
+  "address": "Daejeon-si Yuseong-gu Hakha-dong",
+  "phoneNumber": "010-xxxx-xxxx",
+  "email": "Jaeyoung@wisoft.io"
+}
+
+###
+DELETE http://localhost:8000/api/users/641abc39cd31d82b3753f8dd
+
+###
+PATCH http://localhost:8000/api/users/641abc39cd31d82b3753f8dd
+Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiSmFleW91bmciLCJlbWFpbCI6IkphZXlvdW5nQHdpc29mdC5pbyJ9LCJpYXQiOjE2Nzk0NzM3MjEsImV4cCI6MTY3OTQ3NzMyMX0.a5VdgYt2R-Py-BfUQmVmhTMk9fdTiV7FkuQMLGjeo_U"
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email": "Jaeyoung22222@wisoft.io"
+}
