@@ -8,21 +8,21 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "userName": "Jaeyoung",
+  "userName": "Jae0",
   "address": "Daejeon-si Yuseong-gu Hakha-dong",
   "phoneNumber": "010-xxxx-xxxx",
-  "email": "Jaeyoung@wisoft.io"
+  "email": "Jae0@wisoft.io"
 }
 
 ###
 DELETE http://localhost:8000/api/users/641abc39cd31d82b3753f8dd
 
 ###
-PATCH http://localhost:8000/api/users/641abc39cd31d82b3753f8dd
-Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiSmFleW91bmciLCJlbWFpbCI6IkphZXlvdW5nQHdpc29mdC5pbyJ9LCJpYXQiOjE2Nzk0NzM3MjEsImV4cCI6MTY3OTQ3NzMyMX0.a5VdgYt2R-Py-BfUQmVmhTMk9fdTiV7FkuQMLGjeo_U"
+PATCH http://localhost:8000/api/users/641af66e58e97679c3272bb9
+Authorization: "yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiSmFlMCIsImVtYWlsIjoiSmFlMEB3aXNvZnQuaW8ifSwiaWF0IjoxNjc5NDg4NjIyLCJleHAiOjE2Nzk0ODg5MjJ9.cwb_5gheSlCpZ52ujlBhxhbDMeWXbj4BKG15aP0YGTc"
 Accept: application/json
 Content-Type: application/json
 
 {
-  "email": "Jaeyoung22222@wisoft.io"
+  "email": "Jaeyoung1111@wisoft.io"
 }

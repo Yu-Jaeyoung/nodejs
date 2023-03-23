@@ -171,16 +171,16 @@ router.route("/api/users/:id")
   })
   .delete(async (req, res) => {
     const token = req.headers["authorization"];
-    // console.log(token);
-    if (token) {
-      jwt.verify(token, "addressBook", (err, decoded) => {
-        if (err) {
-          res.status(404);
-        }
-      });
+    jwt.verify(token, "addressBook", (err,next) => {
+      if (err) {
+        res.status(404);
+      }
+      next();
+    })
+
       const deleteUser = await deleteById(req.params.id);
       console.log(`${req.params.id}님이 삭제되었습니다`);
       res.status(201).send(deleteUser);
-    }
+
   });
 export default router;
