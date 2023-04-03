@@ -4,7 +4,6 @@ import {
   addAddressInfo,
   checkVerifiedUser,
   createUser,
-  deleteAddressInfo,
   getAddressInfo,
 } from "../repository/index.js";
 
@@ -35,6 +34,12 @@ router.route("/api/user/signup")
     }
   });
 
+/**
+ * login process
+ * 1. id랑 password 일치 확인
+ * 2. JWT 토큰 생성 (id 정보를 담아서 생성)
+ * 3. JWT 반환
+ */
 router.route("/api/user/signin")
   .post(async (req, res) => {
     const user = {};
@@ -51,6 +56,12 @@ router.route("/api/user/signin")
     }
   })
   // get도 전체 정보를 가져오고 있어서, 어떤 정보를 받아서 출력할 것인지 각각 선언이 필요.
+  /**
+   * get
+   * 1. 사용자가 header에 JWT(accessToken: ${JWT})를 담아서 GET 요청 전송
+   * 2. 사용자가 header로 전송한 accessToken을 읽어서 id를 추출
+   * 3. id로 정보 조회
+   */
   .get(async (req, res) => {
     const user = {};
     user.id = req.query.id;
