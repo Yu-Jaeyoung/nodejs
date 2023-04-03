@@ -1,0 +1,47 @@
+###
+POST http://localhost:8000/api/user/signup
+Accept: application/json
+Content-Type: application/json
+
+{
+  "username": "Jack",
+  "id": "1234",
+  "password" : "12345678"
+}
+
+###
+POST http://localhost:8000/api/user/signin
+Accept: application/json
+Content-Type: application/json
+
+{
+  "id": "1234",
+  "password" : "12345678"
+}
+
+
+###
+POST http://localhost:8000/api/user/signin?id=1234&password=12345678
+Accept: application/json
+Content-Type: application/json
+
+{
+  "username" : "Jaeyoung",
+  "address" : "Sejong-si Dodam-dong",
+  "phoneNumber" : "010-xxxx-xxxx",
+  "email" : "Jaeyoung@wisoft.io"
+}
+
+###
+GET http://localhost:8000/api/user/signin?id=1234&password=12345678
+Accept: application/json
+
+###
+DELETE http://localhost:8000/api/user/signin?id=1234&password=12345678
+Accept: application/json
+Content-Type: application/json
+
+{
+  "username" : "Jaeyoung",
+  "address" : "Sejong-si Dodam-dong",
+}
