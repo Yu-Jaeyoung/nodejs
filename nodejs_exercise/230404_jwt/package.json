@@ -1,0 +1,19 @@
+{
+  "name": "230404_jwt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app"
+  },
+  "keywords": [],
+  "author": "Jaeyoung",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongodb": "^5.1.0",
+    "nodemon": "^2.0.21"
+  },
+  "type": "module"
+}

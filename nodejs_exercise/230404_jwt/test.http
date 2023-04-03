@@ -1,0 +1,21 @@
+### signup
+POST localhost:8888/api/signup
+Content-Type: application/json
+
+{
+  "username" : "test",
+  "password" : "123"
+}
+
+### signin
+POST localhost:8888/api/signin
+Content-Type: application/json
+
+{
+  "username" : "test",
+  "password" : "123"
+}
+
+### others
+GET localhost:8888/api/test
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE2ODA1Mzk0NzUsImV4cCI6MTY4MDU0MTI3NSwiaXNzIjoiaXNzdWVyIn0.-PlhG_g2JqnILveZNCk9KLyKP8fKHrQFBlsPU-MjNyI
